@@ -25,9 +25,9 @@ Zere Mukanova
 
 
 
-## Homework 2: 
+# Homework 1: 
 
-# zeremhw1_site
+## zeremhw1_site
 Team members:
   Zere Mukanova
 
