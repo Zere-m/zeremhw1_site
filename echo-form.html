@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Echo Test Form (HW2)</title>
+  <meta charset="UTF-8">
+
+<script src="https://cdn.logr-in.com/LogRocket.min.js" crossorigin="anonymous"></script>
+<script>window.LogRocket && window.LogRocket.init('ldesjm/zeremhw1site');</script>
+
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VK38Y6EJBG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VK38Y6EJBG');
+</script>
+
+
+<body>
+
+  <h1>Echo Form (Central form for all languages)</h1>
+
+  <p>
+    This form sends data to one of the echo CGI endpoints.
+    It supports multiple HTTP methods and encodings.
+  </p>
+
+  <hr>
+
+  <form id="echoForm" action="/cgi-bin/echo-python.py" method="POST">
+
+    <!-- Language Endpoint -->
+    <label><b>Choose Language Endpoint:</b></label><br>
+    <select id="language">
+      <option value="/cgi-bin/echo-python.py">Python Echo</option>
+      <option value="/cgi-bin/echo-go">Go Echo</option>
+      <option value="/cgi-bin/echo-php.php">PHP Echo</option>
+    </select>
+
+    <br><br>
+
+    <!-- HTTP Method -->
+    <label><b>HTTP Method:</b></label><br>
+    <select id="method">
+      <option value="GET">GET</option>
+      <option value="POST" selected>POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+
+    <br><br>
+
+    <!-- Encoding -->
+    <label><b>Encoding Type:</b></label><br>
+    <select id="encoding">
+      <option value="application/x-www-form-urlencoded" selected>
+        x-www-form-urlencoded
+      </option>
+      <option value="application/json">
+        application/json
+      </option>
+    </select>
+
+    <br><br>
+
+    <!-- Fields -->
+    <label><b>Field 1:</b></label><br>
+    <input type="text" id="field1" name="field1" value="hello">
+
+    <br><br>
+
+    <label><b>Field 2:</b></label><br>
+    <input type="text" id="field2" name="field2" value="world">
+
+    <br><br>
+
+    <button type="submit">Send Request</button>
+
+  </form>
+
+  <hr>
+
+  <p>
+    <b>Note:</b> Without JavaScript, this form will always submit as POST
+    using x-www-form-urlencoded to the Python endpoint.
+  </p>
+
+  <script>
+    const form = document.getElementById("echoForm");
+
+    form.addEventListener("submit", function(event) {
+
+      event.preventDefault(); // stop normal form submission
+
+      const endpoint = document.getElementById("language").value;
+      const method = document.getElementById("method").value;
+      const encoding = document.getElementById("encoding").value;
+
+      const field1 = document.getElementById("field1").value;
+      const field2 = document.getElementById("field2").value;
+
+      // Build data object
+      const dataObj = {
+        field1: field1,
+        field2: field2
+      };
+
+      // Handle GET separately (query string)
+      if (method === "GET") {
+        const params = new URLSearchParams(dataObj).toString();
+        window.location.href = endpoint + "?" + params;
+        return;
+      }
+
+      // Otherwise use fetch for POST/PUT/DELETE
+      let bodyData;
+
+      if (encoding === "application/json") {
+        bodyData = JSON.stringify(dataObj);
+      } else {
+        bodyData = new URLSearchParams(dataObj).toString();
+      }
+
+      fetch(endpoint, {
+        method: method,
+        headers: {
+          "Content-Type": encoding
+        },
+        body: bodyData
+      })
+      .then(response => response.text())
+      .then(result => {
+        // Replace page with echo output
+        document.open();
+        document.write(result);
+        document.close();
+      })
+      .catch(err => {
+        alert("Request failed: " + err);
+      });
+
+    });
+  </script>
+
+</body>
+</html>
