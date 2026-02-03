@@ -1,22 +1,22 @@
-## Homework 2: 
-# Link to website: 
+# Homework 2: 
+## Link to website: 
 https://zeremhw1.site/
 
-# Approach of free-choice analytics: 
+## Approach of free-choice analytics: 
 I chose Microsoft Clarity after briefly looking at other options like Plausible and Umami, but Clarity was the easiest to set up quickly and is completely free, which was the main reason. It only required adding a simple script tag to my pages, and provided helpful features like heatmaps and session replays to see how users interact with the site. 
 
-# Team Member: 
+## Team Member: 
 Zere Mukanova
 
-# IP address: 
+## IP address: 
 64.23.244.69
 
-# Grader login to server:
+## Grader login to server:
   Username: grader
   Password: Grader123
 
 
-# Website login:
+## Website login:
   Username: zere
   Password: CSE135winter2026
   
