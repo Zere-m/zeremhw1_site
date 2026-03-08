@@ -1,3 +1,25 @@
+
+# Derisk checkpoint
+## Dashboard URL: 
+  https://reporting.zeremhw1.site/dashboard.php
+
+## Username & password for reporting dashboard: 
+  User: grader
+  Password: Grader123
+
+## Team Member: 
+  Zere Mukanova
+
+## Point 1: 
+  I decided to continue with PHP for a simpler solution, and created a PHP session based login system for the dashboard. This has simple logic: if someone tries to access the dashboard by bypassing the login screen, they will be redirected back to the login
+## Point 2: 
+  I sent a request using the fetch() API and GET to grab the data from collector server. I also configured CORS headers on the API to allow my reporting domain to read the JSON payload. My Data table is a simple HTML table created using plain JavaScript, where all table cells are populated using textContent. This prevents XSS attacks because the tags are not revealed.
+## Point 3: 
+  I used Chart.js to create immediate feedback, using a simple frequency count on my JSON data (for each metric). 
+
+
+
+
 # Homework 3
 
 ## Link to website: 
