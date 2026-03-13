@@ -1,3 +1,62 @@
+# Final Project Push - Homework 5
+
+## Repos and sites: 
+1) Main site repo: https://github.com/Zere-m/zeremhw1_site
+   Main site link: https://zeremhw1.site/
+2) Test site repo: https://github.com/Zere-m/test-zeremhw1.git
+   Test site link: https://test.zeremhw1.site/
+3) Collector site repo: https://github.com/Zere-m/collector-zeremhw1.git
+   Collector site link: https://collector.zeremhw1.site/
+5) Reporting site repo: https://github.com/Zere-m/reporting-zeremhw1.git
+   Reporting site link: https://reporting.zeremhw1.site/
+   Reporting dashboard link: https://reporting.zeremhw1.site/login.php
+
+This project is a full-stack, distributed web application designed to collect, store, and report on web metrics. The architecture is split across multiple subdomains to separate concerns between data ingestion (Collector) and data visualization (Reporting), communicating securely via a RESTful API and Cross-Origin Resource Sharing (CORS).
+
+## System Architecture & Subdomains
+
+The site is hosted on an Apache/Nginx web server and is divided into these virtual hosts:
+
+* **Main Site (`zeremhw1.site`):** The primary landing area.
+* **Collector (`collector.zeremhw1.site`):** Handles data ingestion. It contains the core API endpoints (e.g., `/api/metrics/index.php`) that query the database and serve JSON data to authorized requesters.
+* **Reporting (`reporting.zeremhw1.site`):** The front-end dashboard interface. It fetches data from the Collector API and displays it to the user. Features a secure login system and role-based routing.
+* **Test (`test.zeremhw1.site`):** Provided website for testing configurations and endpoints.
+
+## Key Features
+
+* **RESTful API:** A custom PHP API built on the Collector subdomain that outputs database metrics as structured JSON.
+* **Cross-Origin Resource Sharing (CORS):** Properly configured headers allowing the Reporting frontend to securely `fetch()` data from the Collector backend.
+* **Role-Based Access Control (RBAC):** A secure Super Admin dashboard (`manage_users.php`) capable of creating users and assigning specific roles (Viewer, Analyst, Super Admin) and data permissions (Performance, Behavior, All).
+* **Centralized Database Management:** All database connections are routed through a single, secure `db.php` file utilizing PDO for secure PostgreSQL (Supabase) queries.
+
+## Security Measures Implemented
+
+* **Hidden Credentials:** All sensitive database credentials and API keys are stored in a centralized file (`db.php` / `.env`) located outside of public-facing scripts.
+* **Git Ignore:** Strict `.gitignore` configurations are enforced across all repositories to ensure sensitive credentials are never committed to version control.
+* **Prepared Statements:** All SQL queries (like user creation and login) utilize PDO prepared statements to prevent SQL injection attacks.
+* **File Permissions:** Server directories are strictly permissioned to the appropriate user to prevent unauthorized access or execution.
+
+## Tech Stack
+* **Backend:** PHP 8+
+* **Database:** PostgreSQL (hosted via Supabase)
+* **Frontend:** HTML5, CSS3, Vanilla JavaScript
+* **Server:** [Apache or Nginx] / Ubuntu Linux
+
+## AI Acknowledgments
+During the development of this project, Artificial Intelligence tools were utilized to assist with specific front-end and presentation tasks. Specifically, AI was used for:
+* **HTML/CSS Styling:** Generating responsive layouts, refining CSS styling rules, and improving the overall user interface of the reporting dashboard and login pages.
+* **Data Visualization Help:** Assisting with the frontend logic and formatting required to effectively display and visualize the JSON metric data pulled from the Collector API.
+* * **Report Writeup:** Collecting thoughts together and combining them for a comprehensive summary
+
+
+
+
+
+
+
+
+
+
 
 # Derisk checkpoint
 ## Dashboard URL: 
