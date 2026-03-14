@@ -47,9 +47,7 @@ During the development of this project, Artificial Intelligence tools were utili
 * **HTML/CSS Styling:** Generating responsive layouts, refining CSS styling rules, and improving the overall user interface of the reporting dashboard and login pages.
 * **Data Visualization Help:** Assisting with the frontend logic and formatting required to effectively display and visualize the JSON metric data pulled from the Collector API.
 * * **Report Writeup:** Collecting thoughts together and combining them for a comprehensive summary
-
-
-
+**Concept Explanation & Debugging:** AI helped to break down complex server-side and architectural concepts.
 
 
 
